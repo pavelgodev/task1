@@ -69,20 +69,14 @@ type animal interface{
     monthlyFoodWeight() int
 }
 
-func animalInfo( animalItem animal) (name string, weight int, monthlyFoodWeight int) {
-    name = animalItem.getType()
-    weight = animalItem.getWeight()
-    monthlyFoodWeight = animalItem.monthlyFoodWeight()
-
-    return name, weight, monthlyFoodWeight
-}
-
 func farmData(farmAnimals []animal) int {
 
-   var totalFarmFood int
+    var totalFarmFood int
 
     for _, val := range farmAnimals{
-            typeAnimal, weightAnimal, monthlyFoodWeight := animalInfo(val)
+            typeAnimal := val.getType()
+            weightAnimal := val.getWeight()
+            monthlyFoodWeight := val.monthlyFoodWeight()
             totalFarmFood += monthlyFoodWeight
             fmt.Printf("Type of animal is %s, weight equals %d kg, required quantity of food for this animal per month is %d kg \n", typeAnimal, weightAnimal, monthlyFoodWeight)
         }
