@@ -10,7 +10,7 @@ func (d dog) getWeight() int{
     return d.weight
 }
 
-func (d dog) getType() string{
+func (d dog) String() string{
     return "dog"
 }
 
@@ -30,7 +30,7 @@ func (c cat) getWeight() int{
     return c.weight
 }
 
-func (c cat) getType() string{
+func (c cat) String() string{
     return "cat"
 }
 
@@ -50,7 +50,7 @@ func (m cow) getWeight() int{
     return m.weight
 }
 
-func (m cow) getType() string{
+func (m cow) String() string{
     return "cow"
 }
 
@@ -63,8 +63,8 @@ func (m cow) monthlyFoodWeight() int{
 }
 
 type animal interface{
+    fmt.Stringer
     getWeight() int
-    getType() string
     feedingRate() int
     monthlyFoodWeight() int
 }
@@ -74,7 +74,7 @@ func farmData(farmAnimals []animal) int {
     var totalFarmFood int
 
     for _, val := range farmAnimals{
-            typeAnimal := val.getType()
+            typeAnimal := val.String()
             weightAnimal := val.getWeight()
             monthlyFoodWeight := val.monthlyFoodWeight()
             totalFarmFood += monthlyFoodWeight
